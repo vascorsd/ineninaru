@@ -6,6 +6,7 @@ scalaJsVersion   = "0.6.32"  # requires nodejs installed (?)
 # and allows powerful tools like scalafix to work on those metadata.
 compilerDeps = [
     ["org.scalameta",     "semanticdb-scalac",     "4.3.0",    "full"],
+    ["io.tryp",           "splain",                "0.5.1",    "full"]
 ]
 scalaOptions = [
     "-encoding", "UTF-8",
@@ -16,6 +17,8 @@ scalaOptions = [
     "-Ywarn-numeric-widen",
     "-Yrangepos",
     "-Ywarn-unused:imports",
+    "-Ywarn-value-discard",
+    "-Ywarn-dead-code",
 
     "-Xlint:adapted-args",
     "-Xlint:infer-any",
@@ -35,10 +38,11 @@ scalaDeps = [
     ["dev.zio",                       "zio",              "1.0.0-RC17"],
     ["dev.zio",                       "zio-streams",      "1.0.0-RC17"],
     ["com.softwaremill.sttp.client",  "core",             "2.0.0-RC11"],
-    ["eu.timepit",                    "refined",          "0.9.12"],
-    ["is.cir",                        "ciris",            "1.0.4"],
-    ["io.scalaland",                  "chimney",          "0.4.1"],
-    ["com.github.julien-truffaut",    "monocle-core",     "2.0.0"],
+    ["eu.timepit",                    "refined",          "0.9.12"    ],
+    ["is.cir",                        "ciris",            "1.0.4"     ],
+    ["io.scalaland",                  "chimney",          "0.4.1"     ],
+    ["com.github.julien-truffaut",    "monocle-core",     "2.0.0"     ],
+    ["com.propensive",                "magnolia",         "0.12.6"    ],
 ]
 
 [module.server.test]

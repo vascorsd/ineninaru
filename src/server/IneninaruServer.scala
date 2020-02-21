@@ -9,7 +9,7 @@ object IneninaruServer
   val program =
     for {
       _ <- putStrLn("Ineninaru howling... awwwooooooo!!")
-    } yield ()
+    } yield (HiMome("here, good soup"))
 
   def run(args: List[String]) = {
     program.ignore.map(_ => 0)

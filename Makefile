@@ -1,4 +1,4 @@
-all: clean reload compile
+all: clean reload compile-all
 	
 clean:
 	rm --recursive --force --verbose build .bloop .idea

@@ -1,0 +1,6 @@
+/.idea/
+/.bloop/
+/.metals/
+
+/build/
+/out/

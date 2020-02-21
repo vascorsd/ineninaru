@@ -1,0 +1,83 @@
+[project]
+scalaVersion     = "2.13.1"
+scalaJsVersion   = "0.6.32"  # requires nodejs installed (?) 
+
+# semanticdb is a compiler plugin that extracts details from the compiler
+# and allows powerful tools like scalafix to work on those metadata.
+compilerDeps = [
+    ["org.scalameta",     "semanticdb-scalac",     "4.3.0",    "full"],
+]
+scalaOptions = [
+    "-encoding", "UTF-8",
+    "-unchecked",
+    "-deprecation",
+    "-feature",
+
+    "-Ywarn-numeric-widen",
+    "-Yrangepos",
+    "-Ywarn-unused:imports",
+
+    "-Xlint:adapted-args",
+    "-Xlint:infer-any",
+    "-Xlint:missing-interpolator",
+    "-Xlint:private-shadow",
+    "-Xlint:type-parameter-shadow",
+]
+testFrameworks = ["utest.runner.Framework"]
+
+
+[module.server]
+root = "."
+moduleDeps = ["protocol"]
+sources = ["src/server"]
+targets = ["jvm"]
+scalaDeps = [
+    ["dev.zio",                       "zio",              "1.0.0-RC17"],
+    ["dev.zio",                       "zio-streams",      "1.0.0-RC17"],
+    ["com.softwaremill.sttp.client",  "core",             "2.0.0-RC11"],
+    ["eu.timepit",                    "refined",          "0.9.12"],
+    ["is.cir",                        "ciris",            "1.0.4"],
+    ["io.scalaland",                  "chimney",          "0.4.1"],
+    ["com.github.julien-truffaut",    "monocle-core",     "2.0.0"],
+]
+
+[module.server.test]
+sources = ["test/server"]
+scalaDeps = [
+    ["com.lihaoyi", "utest", "0.7.4"]
+]
+
+
+
+[module.client]
+root = "."
+moduleDeps = ["protocol"]
+sources = ["src/client"]
+targets = ["jvm"]
+scalaDeps = [
+    ["dev.zio",                       "zio",            "1.0.0-RC17"],
+    ["dev.zio",                       "zio-streams",    "1.0.0-RC17"],
+    ["com.softwaremill.sttp.client",  "core",           "2.0.0-RC11"],
+]
+
+[module.client.test]
+sources = ["test/client"]
+scalaDeps = [
+    ["com.lihaoyi", "utest", "0.7.4"]
+]
+
+
+
+[module.protocol]
+root = "."
+sources = ["src/protocol"]
+targets = ["jvm", "js"]
+
+[module.protocol.test]
+sources = ["test/protocol"]
+scalaDeps = [
+    ["com.lihaoyi", "utest", "0.7.4"]
+]
+
+
+

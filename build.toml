@@ -5,7 +5,7 @@ scalaJsVersion   = "0.6.32"  # requires nodejs installed (?)
 # semanticdb is a compiler plugin that extracts details from the compiler
 # and allows powerful tools like scalafix to work on those metadata.
 compilerDeps = [
-    ["org.scalameta",     "semanticdb-scalac",     "4.3.0",    "full"],
+#    ["org.scalameta",     "semanticdb-scalac",     "4.3.0",    "full"],
     ["io.tryp",           "splain",                "0.5.1",    "full"]
 ]
 scalaOptions = [

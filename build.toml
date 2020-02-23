@@ -1,11 +1,12 @@
 [project]
-scalaVersion     = "2.13.1"
-scalaJsVersion   = "0.6.32"  # requires nodejs installed (?) 
+scalaVersion       = "2.13.1"
+#scalaJsVersion     = "0.6.32"  # requires nodejs installed (?).
+#scalaNativeVersion = "0.3.9"   # llvm and clang stuff must be on the system. check the scala native site.
 
 # semanticdb is a compiler plugin that extracts details from the compiler
 # and allows powerful tools like scalafix to work on those metadata.
 compilerDeps = [
-#    ["org.scalameta",     "semanticdb-scalac",     "4.3.0",    "full"],
+#    ["org.scalameta",              "semanticdb-scalac",        "4.3.0",    "full"],
 #    ["com.sksamuel.scapegoat",     "scalac-scapegoat-plugin",  "1.4.1",    "full"],
 #    ["org.wartremove",             "wartremover",              "2.4.4",    "full"],
     ["io.tryp",                    "splain",                   "0.5.1",    "full"],
@@ -42,7 +43,7 @@ targets = ["jvm"]
 scalaDeps = [
     ["dev.zio",                       "zio",              "1.0.0-RC17"],
     ["dev.zio",                       "zio-streams",      "1.0.0-RC17"],
-    ["com.softwaremill.sttp.client",  "core",             "2.0.0-RC11"],
+    ["com.softwaremill.sttp.client",  "core",             "2.0.0-RC13"],
     ["eu.timepit",                    "refined",          "0.9.12"    ],
     ["is.cir",                        "ciris",            "1.0.4"     ],
     ["io.scalaland",                  "chimney",          "0.4.1"     ],
@@ -66,7 +67,7 @@ targets = ["jvm"]
 scalaDeps = [
     ["dev.zio",                       "zio",            "1.0.0-RC17"],
     ["dev.zio",                       "zio-streams",    "1.0.0-RC17"],
-    ["com.softwaremill.sttp.client",  "core",           "2.0.0-RC11"],
+    ["com.softwaremill.sttp.client",  "core",           "2.0.0-RC13"],
 ]
 
 [module.client.test]
@@ -80,7 +81,7 @@ scalaDeps = [
 [module.protocol]
 root = "."
 sources = ["src/protocol"]
-targets = ["jvm", "js"]
+targets = ["jvm"]
 
 [module.protocol.test]
 sources = ["test/protocol"]

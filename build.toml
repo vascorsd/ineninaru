@@ -7,6 +7,7 @@ scalaJsVersion   = "0.6.32"  # requires nodejs installed (?)
 compilerDeps = [
 #    ["org.scalameta",     "semanticdb-scalac",     "4.3.0",    "full"],
 #    ["com.sksamuel.scapegoat",     "scalac-scapegoat-plugin",  "1.4.1",    "full"],
+#    ["org.wartremove",             "wartremover",              "2.4.4",    "full"],
     ["io.tryp",                    "splain",                   "0.5.1",    "full"],
 ]
 scalaOptions = [
@@ -28,7 +29,7 @@ scalaOptions = [
     "-Xlint:type-parameter-shadow",
 
 #    "-P:scapegoat:dataDir:$BUILD_PATH/build/scapegoat",
-    "-P:scapegoat:reports:html",
+#    "-P:wartremover:only-warn-traverser:org.wartremover.warts.Unsafe",
 ]
 testFrameworks = ["utest.runner.Framework"]
 

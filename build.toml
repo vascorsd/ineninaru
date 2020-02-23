@@ -6,7 +6,8 @@ scalaJsVersion   = "0.6.32"  # requires nodejs installed (?)
 # and allows powerful tools like scalafix to work on those metadata.
 compilerDeps = [
 #    ["org.scalameta",     "semanticdb-scalac",     "4.3.0",    "full"],
-    ["io.tryp",           "splain",                "0.5.1",    "full"]
+#    ["com.sksamuel.scapegoat",     "scalac-scapegoat-plugin",  "1.4.1",    "full"],
+    ["io.tryp",                    "splain",                   "0.5.1",    "full"],
 ]
 scalaOptions = [
     "-encoding", "UTF-8",
@@ -25,6 +26,9 @@ scalaOptions = [
     "-Xlint:missing-interpolator",
     "-Xlint:private-shadow",
     "-Xlint:type-parameter-shadow",
+
+#    "-P:scapegoat:dataDir:$BUILD_PATH/build/scapegoat",
+    "-P:scapegoat:reports:html",
 ]
 testFrameworks = ["utest.runner.Framework"]
 

@@ -1,17 +1,25 @@
 package ineninaru
 
-import zio.App
+import configuration.Configuration
+import zio._
 import zio.console._
+import zio.interop.catz._
 
-object IneninaruServer
-  extends App {
+object IneninaruServer extends App {
 
-  val program =
+  def run(args: List[String]): URIO[Console, Int] = {
+    (for {
+      _ <- putStrLn("Ineninaru, starting...")
+      conf <- Configuration.definition
+        .load[Task]
+        .tapError(err => putStrLn(err.getMessage))
+      _ <- program(conf)
+    } yield ()).fold(_ => 1, _ => 0)
+  }
+
+  def program(conf: Configuration) = {
     for {
-      _ <- putStrLn("Ineninaru howling... awwwooooooo!!")
-    } yield (HiMome("here, good soup"))
-
-  def run(args: List[String]) = {
-    program.ignore.map(_ => 0)
+      _ <- putStrLn(s"Running on ${conf.serverHost}:${conf.serverPort}")
+    } yield ()
   }
 }

@@ -3,8 +3,7 @@ package ineninaru
 import zio.App
 import zio.console._
 
-object IneninaruClient
-  extends App {
+object IneninaruClient extends App {
 
   val program =
     for {

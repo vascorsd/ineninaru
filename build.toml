@@ -6,7 +6,7 @@ scalaVersion       = "2.13.1"
 # semanticdb is a compiler plugin that extracts details from the compiler
 # and allows powerful tools like scalafix to work on those metadata.
 compilerDeps = [
-#    ["org.scalameta",              "semanticdb-scalac",        "4.3.0",    "full"],
+    ["org.scalameta",              "semanticdb-scalac",        "4.3.0",    "full"],
 #    ["com.sksamuel.scapegoat",     "scalac-scapegoat-plugin",  "1.4.1",    "full"],
 #    ["org.wartremove",             "wartremover",              "2.4.4",    "full"],
     ["io.tryp",                    "splain",                   "0.5.1",    "full"],

@@ -1,7 +1,9 @@
 root = true
 
 [*]
+# all text shall be utf-8 encoded
 charset = utf-8
+# linux style lines
 end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true

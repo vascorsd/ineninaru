@@ -3,8 +3,6 @@ scalaVersion       = "2.13.2"
 #scalaJsVersion     = "0.6.32"  # requires nodejs installed (?).
 #scalaNativeVersion = "0.3.9"   # llvm and clang stuff must be on the system. check the scala native site.
 
-# semanticdb is a compiler plugin that extracts details from the compiler
-# and allows powerful tools like scalafix to work on those metadata.
 compilerDeps = [
     ["org.scalameta",              "semanticdb-scalac",        "4.3.10",    "full"],
     ["io.tryp",                    "splain",                   "0.5.5",     "full"],
@@ -29,8 +27,12 @@ scalaOptions = [
     "-Xlint:private-shadow",
     "-Xlint:type-parameter-shadow",
 
-#    "-P:semanticdb:sourceroot:.",
-#    "-P:semanticdb:targetroot:./build/semanticdb",
+    "-P:semanticdb:synthetics:on",
+    "-P:semanticdb:failures:warning",
+    "-P:semanticdb:sourceroot:/home/diaz/dev/personal/scala/ineninaru",
+    "-P:semanticdb:targetroot:/home/diaz/dev/personal/scala/ineninaru/build/semanticdb",
+
+    "-Xplugin-require:semanticdb",
 ]
 testFrameworks = ["utest.runner.Framework"]
 
@@ -41,9 +43,10 @@ moduleDeps = ["protocol"]
 sources = ["src/server"]
 targets = ["jvm"]
 scalaDeps = [
-    ["dev.zio",                       "zio",              "1.0.0-RC18-2"],
-    ["dev.zio",                       "zio-interop-cats", "2.0.0.0-RC13"],
-    ["dev.zio",                       "zio-streams",      "1.0.0-RC18-2"],
+    ["dev.zio",                       "zio",              "1.0.0-RC19-2"],
+    ["dev.zio",                       "zio-interop-cats", "2.0.0.0-RC14"],
+    ["dev.zio",                       "zio-streams",      "1.0.0-RC19-2"],
+    ["dev.zio",                       "zio-nio",          "1.0.0-RC6"     ],
     ["com.softwaremill.sttp.client",  "core",             "2.1.1"     ],
     ["eu.timepit",                    "refined",          "0.9.14"    ],
     ["is.cir",                        "ciris",            "1.0.4"     ],
@@ -66,8 +69,8 @@ moduleDeps = ["protocol"]
 sources = ["src/client"]
 targets = ["jvm"]
 scalaDeps = [
-    ["dev.zio",                       "zio",            "1.0.0-RC18-2"],
-    ["dev.zio",                       "zio-streams",    "1.0.0-RC18-2"],
+    ["dev.zio",                       "zio",            "1.0.0-RC19-2"],
+    ["dev.zio",                       "zio-streams",    "1.0.0-RC19-2"],
     ["com.softwaremill.sttp.client",  "core",           "2.1.1"],
 ]
 

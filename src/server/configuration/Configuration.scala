@@ -1,7 +1,7 @@
 package configuration
 
-import ciris._
 import cats.implicits._
+import ciris._
 
 final case class Configuration private (
     serverHost: String,

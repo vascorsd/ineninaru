@@ -69,7 +69,7 @@ run APP: build
 check-format:
     {{SCALAFMT}} --git true --list --test --stdout
 
-check-fix:
+check-fix: build
     #!/usr/bin/env bash
     TOOL_CLASSPATH="$(
         {{COURSIER}} fetch --cache .scalafix-rules \
@@ -80,26 +80,27 @@ check-fix:
 
     # toml comes from toml-cli installed with rust's cargo
     SCALA_VERSION="$(
-        toml get build.toml project.scalaVersion
-        #cat build.toml | \
-        #    grep scalaVersion | \
-        #    sed -n 's|.*"\(.*\)".*|\1|p'
+        #toml get build.toml project.scalaVersion
+        cat build.toml | \
+            grep scalaVersion | \
+            sed -n 's|.*"\(.*\)".*|\1|p'
     )"
 
-    SCALAC_OPTIONS="$(
-        toml get build.toml project.scalaOptions | \
-            sed -n 's|\[\(.*\).*\]|\1|p' | \
-            sed -n 's|,| |gp'
-    )"
+    #SCALAC_OPTIONS="$(
+    #    toml get build.toml project.scalaOptions | \
+    #        sed -n 's|\[\(.*\).*\]|\1|p' | \
+    #        sed -n 's|,| |gp'
+    #)"
 
-    echo $TOOL_CLASSPATH
-    echo $SCALA_VERSION
-    echo $SCALAC_OPTIONS
+    #echo $TOOL_CLASSPATH
+    #echo $SCALA_VERSION
+    #echo $SCALAC_OPTIONS
 
     {{SCALAFIX}} --tool-classpath "$TOOL_CLASSPATH" \
         --auto-classpath \
         --scala-version "$SCALA_VERSION" \
-        --scalac-options "$SCALAC_OPTIONS" \
+        --scalac-options "-Ywarn-unused" \
+        #--scalac-options "$SCALAC_OPTIONS" \
         --check \
         --verbose \
         --stdout
@@ -108,4 +109,3 @@ check-updates:
     {{SEED}} update
 
 ### end CHECKING / LINTING ###
-
